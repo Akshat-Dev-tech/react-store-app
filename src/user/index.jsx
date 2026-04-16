@@ -12,7 +12,8 @@ const handleForm = (e) => {
     const name = form.get('username')
     const email = form.get('useremail')
     const age = form.get('userage')
-    dispatch({type:'ADD_USER',payload:{name,email,age}})
+    // dispatch({type:'ADD_USER',payload:{name,email,age}})
+    dispatch({type:'user/addUser',payload:{name,email,age}})
     console.log('Form submitted with:', name, email , age)
 }
 
@@ -26,7 +27,7 @@ const handleForm = (e) => {
             <button type='submit'>Submit</button>
         </form>
         {
-            user.name && (
+            user?.name && (
                 <div style={{marginTop:'20px'}}>
                     <h2>User Info:</h2>
                     <p>Name: {user.name}</p>

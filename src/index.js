@@ -3,17 +3,26 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { combineReducers, createStore } from 'redux';
-import { counterReducer } from './Reducer/counterReducer';
+// import { combineReducers, createStore } from 'redux';
+// import { counterReducer } from './Reducer/counterReducer';
 import { Provider } from 'react-redux';
-import { userReducer } from './Reducer/userReducer';
-
+// import { userReducer } from './Reducer/userReducer';
+import { configureStore } from '@reduxjs/toolkit';
+import { counterSlice } from './Reducer/counterReducer';
+import{ userSlice } from './Reducer/userReducer';
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const rootReducer=combineReducers({
-  count:counterReducer,
-  user:userReducer
+// const rootReducer=combineReducers({
+//   count:counterReducer,
+//   user:userReducer
+// })
+
+const rootReducer = configureStore({
+  reducer: {
+    count: counterSlice.reducer,
+    user: userSlice.reducer
+  }
 })
-const store = createStore(rootReducer)
+const store = rootReducer
 root.render(
   <Provider store={store}>
     <App />
