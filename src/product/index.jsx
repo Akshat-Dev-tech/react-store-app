@@ -10,20 +10,24 @@ const Product = () => {
  
   const [product , showProduct] = React.useState(false)
 
-  const getProducts = async () =>{
-    const response = await fetch('https://fakestoreapi.com/products')
-    const data = await response.json()
-    console.log(data)
-    dispatch({type:'SET_LOADER',payload:false})
-    dispatch({type:'ADD_PRODUCT',payload:data})
+  ///by default RTK addes thunk , just used it directly here
+  const getProducts = () =>{
+    return async (dispatch) =>{
+      dispatch({type:'SET_LOADER',payload:true})
+      const response = await fetch('https://fakestoreapi.com/products')
+      const data = await response.json()
+      console.log(data)
+      dispatch({type:'ADD_PRODUCT',payload:data})
+      dispatch({type:'SET_LOADER',payload:false})
+    }
   }
 
   useEffect(()=>{
     if(product){
-      dispatch({type:'SET_LOADER',payload:true})
-      setTimeout(()=>{
-        getProducts()
-      },2000)
+      dispatch(getProducts())
+      // setTimeout(()=>{
+      //   getProducts()
+      // },2000)
     }
   }
   ,[product])
