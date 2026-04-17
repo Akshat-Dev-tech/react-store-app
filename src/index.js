@@ -11,6 +11,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import { counterSlice } from './Reducer/counterReducer';
 import{ userSlice } from './Reducer/userReducer';
 import { BrowserRouter } from 'react-router-dom';
+import { productReducer } from './Reducer/productReducer';
+import { loaderReducer } from './Reducer/loaderReducer';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // const rootReducer=combineReducers({
 //   count:counterReducer,
@@ -20,7 +22,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const rootReducer = configureStore({
   reducer: {
     count: counterSlice.reducer,
-    user: userSlice.reducer
+    user: userSlice.reducer,
+    product: productReducer,
+    loader: loaderReducer
   }
 })
 const store = rootReducer
