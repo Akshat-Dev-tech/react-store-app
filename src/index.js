@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { counterSlice } from './Reducer/counterReducer';
 import{ userSlice } from './Reducer/userReducer';
+import { BrowserRouter } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // const rootReducer=combineReducers({
 //   count:counterReducer,
@@ -25,7 +26,9 @@ const rootReducer = configureStore({
 const store = rootReducer
 root.render(
   <Provider store={store}>
+    <BrowserRouter>
     <App />
+    </BrowserRouter>
   </Provider>
 );
 
