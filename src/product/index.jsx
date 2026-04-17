@@ -6,8 +6,10 @@ const Product = () => {
   const dispatch=useDispatch()
 
   const productState = useSelector((state)=>state.product)
-  const loaderState= useSelector((state)=>state.loader)
+  const {productList,loading:loaderState} = productState
+  // const loaderState= useSelector((state)=>state.loader)
   console.log('Product State:', productState)
+  console.log('Product List:', productList)
  
   const [product , showProduct] = React.useState(false)
 
