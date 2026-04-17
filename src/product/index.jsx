@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { getProducts } from '../Actions/getProducts'
 
 const Product = () => {
   const dispatch=useDispatch()
@@ -11,16 +12,16 @@ const Product = () => {
   const [product , showProduct] = React.useState(false)
 
   ///by default RTK addes thunk , just used it directly here
-  const getProducts = () =>{
-    return async (dispatch) =>{
-      dispatch({type:'SET_LOADER',payload:true})
-      const response = await fetch('https://fakestoreapi.com/products')
-      const data = await response.json()
-      console.log(data)
-      dispatch({type:'ADD_PRODUCT',payload:data})
-      dispatch({type:'SET_LOADER',payload:false})
-    }
-  }
+  // const getProducts = () =>{
+  //   return async (dispatch) =>{
+  //     dispatch({type:'SET_LOADER',payload:true})
+  //     const response = await fetch('https://fakestoreapi.com/products')
+  //     const data = await response.json()
+  //     console.log(data)
+  //     dispatch({type:'ADD_PRODUCT',payload:data})
+  //     dispatch({type:'SET_LOADER',payload:false})
+  //   }
+  // }
 
   useEffect(()=>{
     if(product){
