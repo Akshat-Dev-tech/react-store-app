@@ -21,6 +21,8 @@ export const getProducts = createAsyncThunk(
     const response = await fetch('https://fakestoreapi.com/products')
     const data = await response.json()
     dispatch({type:'SET_LOADER',payload:false})
+    dispatch({type:'product/addProduct',payload:data})
+    // dispatch({type:'ADD_PRODUCT',payload:data})
     return data
 
   }
